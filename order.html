@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Оформити замовлення – Сковорода Вогняр</title>
+    <meta name="description" content="Оформлення замовлення на сковороду з борони зі знижкою 50%"/>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/order.css">
+</head>
+<body>
+
+<div class="order-container">
+    <h1 class="order-title">Оформити замовлення</h1>
+    <p class="order-subtitle">
+        Сковорода для пікніка з борони<br>
+        <strong>Акційна ціна: 945 грн</strong> (замість 1890 грн)
+    </p>
+
+    <form id="orderForm">
+        <div class="form-group">
+            <label for="name">Ваше ім'я *</label>
+            <input type="text" id="name" name="name" required placeholder="Олег">
+        </div>
+
+        <div class="form-group">
+            <label for="phone">Телефон для зв'язку *</label>
+            <input type="tel" id="phone" name="phone" required placeholder="+380 XX XXX XX XX">
+        </div>
+
+        <div class="form-group">
+            <label for="quantity">Кількість сковорід (шт)</label>
+            <input type="number" id="quantity" name="quantity" min="1" value="1">
+        </div>
+
+        <div class="form-group">
+            <label for="comment">Коментар / адреса / побажання</label>
+            <textarea id="comment" name="comment" rows="4" placeholder="Наприклад: доставка Київ, Нова Пошта №15..."></textarea>
+        </div>
+
+        <button type="submit" class="submit-btn">Відправити замовлення</button>
+    </form>
+
+    <div id="success-message">Замовлення успішно відправлено! Менеджер зв'яжеться з вами протягом 10–30 хвилин.</div>
+    <div id="error-message">Сталася помилка. Спробуйте ще раз або напишіть нам в Telegram.</div>
+
+    <a href="index.html" class="back-link">← Повернутися на головну</a>
+</div>
+
+<script>
+    document.getElementById('orderForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const formData = {
+            name: document.getElementById('name').value.trim(),
+            phone: document.getElementById('phone').value.trim(),
+            quantity: document.getElementById('quantity').value,
+            comment: document.getElementById('comment').value.trim()
+        };
+
+        if (!formData.name || !formData.phone) {
+            alert('Заповніть ім'я та телефон!');
+            return;
+        }
+
+        // Імітація відправки (можна замінити на реальну інтеграцію)
+        document.getElementById('success-message').style.display = 'block';
+        document.getElementById('orderForm').reset();
+
+        setTimeout(() => {
+            document.getElementById('success-message').style.display = 'none';
+        }, 8000);
+    });
+</script>
+
+</body>
+</html>
